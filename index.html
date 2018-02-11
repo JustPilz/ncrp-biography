@@ -1,0 +1,413 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Биография</title>
+
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css" rel="stylesheet" type="text/css" />
+<link href="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.css" rel="stylesheet" type="text/css" />
+<script src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.js"></script>
+<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI-Calendar/76959c6f7d33a527b49be76789e984a0a407350b/dist/calendar.min.js"></script>
+
+  <script src="include/clipboard.min.js"></script>
+  <script src="include/highlight.min.js"></script>
+
+<script src="include/docs.js"></script>
+
+    <link rel="stylesheet/less" type="text/css" href="include/form.less" />
+    <script src="include/form.js"></script>
+
+    <style type="text/css">
+        .container {
+            margin: 30px auto 0;
+            display: flex;
+            flex-direction: column;
+            min-width: 400px;
+            max-width: 500px;
+        }
+        .container > * {
+            margin-bottom: 10px !important;
+        }
+
+select:required:invalid {
+  color: rgba(191,191,191,.87);
+}
+option[value=""][disabled] {
+  display: none;
+}
+option {
+  color: black;
+}
+    </style>
+
+
+
+</head>
+<body>
+
+
+
+
+    <div class="container">
+
+        <form class="ui form">
+          <h1 class="ui header">Биография</h1>
+          <h4 class="ui dividing header">Фотография</h4>
+            <div class="field">
+              <label>Ссылка на фотографию</label>
+              <input id="photo" placeholder="http://..." type="text">
+            </div>
+          <h4 class="ui dividing header">Основная информация</h4>
+          <div class="field">
+            <div class="two fields">
+              <div class="field">
+                <label>Имя</label>
+                <input id="firstname" placeholder="Имя" type="text">
+              </div>
+              <div class="field">
+                <label>Фамилия</label>
+                <input id="lastname" placeholder="Фамилия" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <div class="two fields">
+              <div class="twelve wide field">
+                <label>Имя и фамилия на кириллице</label>
+                <input id="cyrillic" placeholder="Имя и фамилия на кириллице" type="text">
+              </div>
+              <div class="seven wide field">
+                <label>Пол</label>
+                    <select id="sex" class="ui dropdown" required>
+                        <option value="" disabled selected hidden>Выберите пол</option>
+                        <option value="мужской">Мужской</option>
+                        <option value="женский">Женский</option>
+                    </select>
+              </div>
+            </div>
+
+          </div>
+          <div class="field">
+            <div class="two fields">
+              <div class="six wide field">
+                <label>Дата рождения</label>
+                <div class="ui calendar" id="date">
+                  <div class="ui input left icon">
+                    <i class="calendar icon"></i>
+                    <input id="birthday" type="text" placeholder="Дата рождения">
+                  </div>
+                </div>
+              </div>
+              <div class="twelve wide field">
+                <label>Место рождения</label>
+                <input id="hometown" placeholder="Место рождения" type="text">
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label>Национальность</label>
+              <select id="nationality" class="ui dropdown" required>
+                  <option value="" disabled selected hidden>Выберите национальность</option>
+                  <option value="Англичанин">Англичанин</option>
+                  <option value="Итальянец">Итальянец</option>
+                  <option value="Американец">Американец</option>
+                  <option value="Ирландец">Ирландец</option>
+                  <option value="Итало-американец">Итало-американец</option>
+                  <option value="Француз">Француз</option>
+                  <option value="Афроамериканец">Афроамериканец</option>
+                  <option value="Китаец">Китаец</option>
+                  <option value="Мексиканец">Мексиканец</option>
+                  <option value="Немец">Немец</option>
+              </select>
+          </div>
+          <div class="field">
+            <label>Место жительства до приезда в Эмпайр-Бэй</label>
+            <input id="beforeplace" placeholder="Место жительства до приезда в Эмпайр-Бэй" type="text">
+          </div>
+          <h4 class="ui dividing header">Семья</h4>
+          <div class="field">
+            <label>Семейное положение</label>
+              <select id="relationshipStatus" class="ui dropdown" required>
+                  <option value="" disabled selected hidden>Выберите тип телосложения</option>
+                  <option value="0">помолвлен(-а)</option>
+                  <option value="1">состоит в браке</option>
+                  <option value="2">вдовец (вдова)</option>
+                  <option value="3">разведен (разведена)</option>
+                  <option value="4">никогда не состоял(-а) в браке</option>
+              </select>
+          </div>
+          <div class="field">
+            <label>Мать</label>
+            <input id="mother" placeholder="Мать" type="text">
+          </div>
+          <div class="field">
+            <label>Отец</label>
+            <input id="father" placeholder="Отец" type="text">
+          </div>
+          <div class="field">
+            <label>Сёстры, братья</label>
+            <input id="siblings" placeholder="Например: John Doe (старший брат)" type="text">
+          </div>
+          <div class="field">
+            <label>Дети</label>
+            <input id="childrens" placeholder="Например: Emily (дочь, 12 лет), Bill (сын, 8 лет)" type="text">
+          </div>
+          <h4 class="ui dividing header">Внешние данные</h4>
+          <div class="field">
+            <label>Рост</label>
+            <input id="growth" placeholder="Рост" type="text">
+          </div>
+          <div class="field">
+            <label>Телосложение</label>
+              <select id="bodytype" class="ui dropdown" required>
+                  <option value="" disabled selected hidden>Выберите тип телосложения</option>
+                  <option value="худощавое">худощавое</option>
+                  <option value="обычное">обычное</option>
+                  <option value="спортивное">спортивное</option>
+                  <option value="мускулистое">мускулистое</option>
+                  <option value="плотное">плотное</option>
+              </select>
+          </div>
+          <div class="field">
+            <label>Цвет волос</label>
+              <select id="haircolor" class="ui dropdown" required>
+                  <option value="" disabled selected hidden>Выберите цвет волос</option>
+                  <option value="тёмный">тёмный</option>
+                  <option value="чёрный">чёрный</option>
+                  <option value="светлый">светлый</option>
+                  <option value="русый">русый</option>
+                  <option value="рыжий">рыжий</option>
+                  <option value="тёмно-русый">тёмно-русый</option>
+                  <option value="тёмно-коричневый">тёмно-коричневый</option>
+                  <option value="седые">седые</option>
+                  <option value="лысый">без волос</option>
+              </select>
+          </div>
+          <div class="field">
+            <label>Цвет глаз</label>
+              <select id="eyescolor" class="ui dropdown" required>
+                  <option value="" disabled selected hidden>Выберите цвет глаз</option>
+                  <option value="синий">синий</option>
+                  <option value="голубой">голубой</option>
+                  <option value="серый">серый</option>
+                  <option value="серо-голубой">серо-голубой</option>
+                  <option value="зелёный">зелёный</option>
+                  <option value="янтарный">янтарный</option>
+                  <option value="оливковый">оливковый</option>
+                  <option value="карий">карий</option>
+                  <option value="чёрный">чёрный</option>
+              </select>
+          </div>
+          <div class="field">
+            <label>Особые приметы</label>
+            <input id="specialSigns" placeholder="Особые приметы" type="text">
+          </div>
+          <div class="field">
+            <label>Привычки</label>
+            <input id="habits" placeholder="Привычки" type="text">
+          </div>
+          <div class="field">
+            <label>Черты характера</label>
+            <input id="traits" placeholder="Черты характера" type="text">
+          </div>
+          <h4 class="ui dividing header">История персонажа и семейный фотоальбом</h4>
+          <div class="field">
+            <label>История</label>
+            <textarea id="story" placeholder="История вашего персонажа" type="text"></textarea>
+          </div>
+          <div class="field">
+            <label>Фото 1</label>
+            <div class="two fields">
+              <div class="field">
+                <label>Подпись к фото</label>
+                <input id="photodesc1" placeholder="Что изображено на фото" type="text">
+              </div>
+              <div class="field">
+                <label>Ссылка на фото</label>
+                <input id="photo1" placeholder="http://..." type="text">
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label>Фото 2</label>
+            <div class="two fields">
+              <div class="field">
+                <label>Подпись к фото</label>
+                <input id="photodesc2" placeholder="Что изображено на фото" type="text">
+              </div>
+              <div class="field">
+                <label>Ссылка на фото</label>
+                <input id="photo2" placeholder="http://..." type="text">
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label>Фото 3</label>
+            <div class="two fields">
+              <div class="field">
+                <label>Подпись к фото</label>
+                <input id="photodesc3" placeholder="Что изображено на фото" type="text">
+              </div>
+              <div class="field">
+                <label>Ссылка на фото</label>
+                <input id="photo3" placeholder="http://..." type="text">
+              </div>
+            </div>
+          </div>
+            <label style="color: red;">Заполнение всех пунктов и ссылка на фотографию персонажа - обязательны!<br />Если пропущен хотя бы один пункт - биография отклоняется.</label>
+            <br />
+            <label style="color: gray;">Фотографии в семейном фотоальбоме могут отсутствовать, однако это должно связываться с историей персонажа.</label>
+            <br />
+            <br />
+            <button id="gen" class="ui primary button" type="button">
+              Сгенерировать
+            </button>
+        </form>
+    </div>
+
+
+    <script type="text/javascript">
+        $('#date').calendar({
+            type: 'date',
+            firstDayOfWeek: 1,
+            monthFirst: false,
+            minDate: new Date(1900, 0, 1),
+            maxDate: new Date(1934, 11, 31),
+            text: {
+                days: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+                months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+                monthsShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+            },
+            formatter: {
+                date: function (date, settings) {
+                    if (!date) return '';
+                    var day = date.getDate();
+                    day = (day < 10 ? '0'+day : day);
+                    var month = date.getMonth() + 1;
+                    month = (month < 10 ? '0'+month : month);
+                    var year = date.getFullYear();
+                    return day + '.' + month + '.' + year;
+                }
+            }
+        });
+
+    </script>
+    <script src="include/less.min.js"></script>
+</body>
+<script src="https://fb.me/react-with-addons-15.1.0.js"></script>
+<script src="https://fb.me/react-dom-15.1.0.js"></script>
+<script type="text/javascript">
+          function download(filename, text) {
+          var element = document.createElement('a');
+          element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+          element.setAttribute('download', filename);
+
+          element.style.display = 'none';
+          document.body.appendChild(element);
+
+          element.click();
+
+          document.body.removeChild(element);
+        }
+
+        // Start file download.
+        document.getElementById("gen").addEventListener("click", function(){
+          console.log('123')
+
+            var info = {
+              photo: null,
+              firstname: null,
+              lastname: null,
+              cyrillic: null,
+              sex: null,
+              birthday: null,
+              hometown: null,
+              nationality: null,
+              beforeplace: null,
+              relationshipStatus: null,
+              mother: null,
+              father: null,
+              siblings: null,
+              childrens: null,
+              growth: null,
+              bodytype: null,
+              haircolor: null,
+              eyescolor: null,
+              specialSigns: null,
+              habits: null,
+              traits: null,
+              story: null,
+              photo1: null,
+              photo2: null,
+              photo3: null,
+              photodesc1: null,
+              photodesc2: null,
+              photodesc3: null
+            };
+
+            var defis = ["beforeplace", "siblings", "childrens", "specialSigns", "habits" ];
+
+            for (var prop in info) {
+
+              info[prop] = document.getElementById(prop).value;
+
+              if(prop == "firstname" || prop == "lastname") {
+                info[prop] = info[prop].charAt(0).toUpperCase() + info[prop].substr(1);
+              }
+
+              if(defis.indexOf(prop) != -1) {
+                info[prop] = (info[prop] == "") ? "-" : info[prop];
+              }
+
+            }
+
+var relationships = {
+  "мужской": ["помолвлен", "состоит в браке", "вдовец", "разведен", "никогда не состоял в браке"],
+  "женский": ["помолвлена", "состоит в браке", "вдова", "разведена", "никогда не состояла в браке"]
+}
+
+
+var text = `## ${info.firstname} ${info.lastname}
+
+![Фотография ${info.firstname} ${info.lastname}](${info.photo})
+
+**Имя:** ${info.firstname}  
+**Фамилия:** ${info.lastname}  
+**Имя и фамилия на кириллице:** ${info.cyrillic}  
+**Пол:** ${info.sex}  
+**Дата рождения:** ${info.birthday}  
+**Место рождения:** ${info.hometown}  
+**Национальность:** ${info.nationality}  
+**Место жительства до прибытия в Эмпайр-Бэй:** ${info.beforeplace}  
+**Семейное положение:** ${relationships[info.sex][info.relationshipStatus]}
+
+**Мать:** ${info.mother}  
+**Отец:** ${info.father}  
+**Сёстры, братья:** ${info.siblings}  
+**Дети:** ${info.childrens}
+
+**Рост:** ${info.growth}  
+**Телосложение:** ${info.bodytype}  
+**Цвет волос:** ${info.haircolor}  
+**Цвет глаз:** ${info.eyescolor}  
+**Особые приметы:** ${info.specialSigns}  
+**Привычки:** ${info.habits}  
+**Черты характера:** ${info.traits}
+
+**История:**  
+${info.story}
+
+![${info.photodesc1}](${info.photo1})
+![${info.photodesc2}](${info.photo2})
+![${info.photodesc3}](${info.photo3})
+`;
+
+
+            var filename = (info.firstname+"-"+info.lastname+".md").toLowerCase();
+
+            download(filename, text);
+        }, false);
+</script>
+</html>
